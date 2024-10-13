@@ -7,11 +7,6 @@ const brandSchema = new mongoose.Schema({
         maxLength: 100,
         require: true, 
     },
-    good: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'good',
-        require: true,
-    },
 });
 
 module.exports = mongoose.model('brand', brandSchema);

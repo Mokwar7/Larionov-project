@@ -18,6 +18,7 @@ const goodSchema = new mongoose.Schema({
         min: 1000,
         max: 1000000,
         default: 1000000,
+        require: true,
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
