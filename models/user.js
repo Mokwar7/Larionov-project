@@ -17,22 +17,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
+    minlength: 8,
   },
   name: {
     type: String,
     minlength: 2,
     maxlength: 30,
-    default: 'Жак-Ив Кусто',
+    required: true,
   },
-  phoneNumber: {
+  tg: {
     type: String,
-    minlength: 10,
-    maxlength: 11,
-    default: '79778070525',
-  },
-  createdAt: {
-    type: Date,
-    default: new Date(),
+    minlength: 2,
+    unique: true,
+    maxlength: 50,
+    required: true,
   }
 });
 

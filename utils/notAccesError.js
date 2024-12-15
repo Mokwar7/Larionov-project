@@ -1,8 +1,8 @@
-class NotAccesError extends Error {
+class NotAccesError extends Error { // make error from default error
   constructor(message) {
-    super(message);
-    this.statusCode = 403;
+    super(message); // take default message
+    this.statusCode = 403; // set status 403
   }
 }
 
-module.exports = NotAccesError;
+module.exports = NotAccesError; // export this error as new class
