@@ -7,7 +7,7 @@
     "lint": "npx eslint .",
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand --forceExit"
   },
   "author": "Mokwar",
   "license": "ISC",
