@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     maxlength: 50,
     required: true,
-  }
+  },
 });
 
 userSchema.statics.findUserByCredentials = function (email, password) {

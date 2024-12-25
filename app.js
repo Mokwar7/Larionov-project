@@ -8,7 +8,7 @@ const cors = require('cors'); // cors to allow connect from other sites
 
 const { celebrate, Joi, errors } = require('celebrate'); // validation
 
-const app = express(); // create app 
+const app = express(); // create app
 
 app.use(cors({
   origin: ['http://192.168.103.52:5173', 'http://localhost:5173'], // allow to connect to this server just from this 3 urls
@@ -58,7 +58,6 @@ app.use(auth); // check auth user to protect other routes
 
 app.use(require('./routes/index')); // all availeble routes in this file
 
-
 app.use('*', (req, res, next) => { // get all errors and send next
   next(new NotFindError('Данная страница не найдена'));
 });
@@ -72,7 +71,7 @@ app.use((err, req, res, next) => { // get all errors
   res
     .status(statusCode) // set status from error
     .send({
-      message: statusCode === 500 ? 'На сервере произошла ошибка' : message, //send error message
+      message: statusCode === 500 ? 'На сервере произошла ошибка' : message, // send error message
     });
 
   next(); // send nextÍÍ

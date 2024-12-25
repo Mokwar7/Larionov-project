@@ -28,7 +28,7 @@ module.exports.createGood = (req, res, next) => {
 };
 
 module.exports.deleteGood = (req, res, next) => {
-  const goodId  = req.params.id;
+  const goodId = req.params.id;
 
   Good.findOne({ goodId })
     .orFail(() => new NotFindError('Good is not found'))
@@ -41,10 +41,14 @@ module.exports.deleteGood = (req, res, next) => {
 };
 
 module.exports.updateGood = (req, res, next) => {
-  const goodId  = req.params.id;
-  const { name, description, price, category, brand } = req.body;
+  const goodId = req.params.id;
+  const {
+    name, description, price, category, brand,
+  } = req.body;
 
-  Good.findByIdAndUpdate(goodId, { name, description, price, category, brand }, {
+  Good.findByIdAndUpdate(goodId, {
+    name, description, price, category, brand,
+  }, {
     new: true,
     runValidators: true,
   })

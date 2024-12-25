@@ -70,5 +70,3 @@ module.exports.updateBrand = (req, res, next) => {
       next(err);
     });
 };
-
-

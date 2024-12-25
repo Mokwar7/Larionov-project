@@ -2,7 +2,9 @@ const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 
 const router = express.Router();
-const { getAllGoods, createGood, deleteGood, updateGood } = require('../controllers/good');
+const {
+  getAllGoods, createGood, deleteGood, updateGood,
+} = require('../controllers/good');
 
 router.get('/', getAllGoods);
 router.post('/', celebrate({

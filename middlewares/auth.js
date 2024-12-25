@@ -1,4 +1,4 @@
-const { NODE_ENV, JWT_SECRET } = process.env; // get status NODE_ENV == production or dev and jwt secret key to work server which generates on server one time
+const { NODE_ENV, JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken'); // import jwt
 const NotCorrectTokenError = require('../utils/notCorrectTokenError'); // import now correct token error
 
@@ -23,5 +23,5 @@ module.exports = (req, res, next) => {
 
   req.user = payload; // if all is okay set payload to req.user
 
-  next(); // allow to acces next requests 
+  next(); // allow to acces next requests
 };

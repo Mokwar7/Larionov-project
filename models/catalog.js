@@ -91,7 +91,7 @@ const catalogSchema = new mongoose.Schema({
   sizesNprices: {
     type: Array,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model('catalog', catalogSchema);

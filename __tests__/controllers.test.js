@@ -2,6 +2,7 @@ const request = require('supertest');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 process.env.PORT = 3008;
 const app = require('../app'); // Предполагается, что ваш express app находится в файле app.js
 const User = require('../models/user');
@@ -35,8 +36,8 @@ describe('Test all Controllers', () => {
     });
     token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '365d' });
     response2 = await request(app)
-        .post('/signin')
-        .send({ email: 'test6@example.com', password: 'testpassword' });
+      .post('/signin')
+      .send({ email: 'test6@example.com', password: 'testpassword' });
     token = response2._body.token;
   });
 
@@ -48,8 +49,8 @@ describe('Test all Controllers', () => {
   describe('getMyInfo', () => {
     it('should return user info', async () => {
       const response = await request(app)
-      .get('/users/me')
-      .set('Authorization', `${response2._body.token}`);
+        .get('/users/me')
+        .set('Authorization', `${response2._body.token}`);
       expect(response.status).toBe(200);
       expect(response.body.data).toMatchObject({
         name: 'Test User',
@@ -59,13 +60,13 @@ describe('Test all Controllers', () => {
     });
 
     it('should return 400 if user id is invalid', async () => {
-        const invalidToken = jwt.sign({ _id: 'invalid-id' }, process.env.JWT_SECRET, { expiresIn: '365d' });
-        const response = await request(app)
-          .get('/users/me')
-          .set('Authorization', `Bearer ${invalidToken}`);
-        expect(response.status).toBe(401);
-        expect(response.body).toEqual(expect.objectContaining({ message: 'Необходима авторизация' }));
-      });
+      const invalidToken = jwt.sign({ _id: 'invalid-id' }, process.env.JWT_SECRET, { expiresIn: '365d' });
+      const response = await request(app)
+        .get('/users/me')
+        .set('Authorization', `Bearer ${invalidToken}`);
+      expect(response.status).toBe(401);
+      expect(response.body).toEqual(expect.objectContaining({ message: 'Необходима авторизация' }));
+    });
   });
 
   describe('cart', () => {
@@ -104,7 +105,7 @@ describe('Test all Controllers', () => {
         .send({ tg: '' });
       expect(response.status).toBe(400);
     });
- });
+  });
 
   describe('brand', () => {
     it('should register a new user', async () => {
@@ -133,7 +134,7 @@ describe('Test all Controllers', () => {
     });
 
     it('should return 409 if email is not unique', async () => {
-        await request(app)
+      await request(app)
         .post('/signup')
         .send({
           name: 'New User',
@@ -153,5 +154,4 @@ describe('Test all Controllers', () => {
       expect(response.body).toEqual(expect.objectContaining({ message: 'Данный email уже зарегистрирован' }));
     });
   });
-
 });

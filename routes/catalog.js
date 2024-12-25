@@ -2,7 +2,9 @@ const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 
 const router = express.Router();
-const { getAllGoods, createGood, deleteGood, getGood } = require('../controllers/catalog');
+const {
+  getAllGoods, createGood, deleteGood, getGood,
+} = require('../controllers/catalog');
 
 router.get('/', getAllGoods);
 router.post('/', celebrate({ // use createMovie method if make post request by link "/"

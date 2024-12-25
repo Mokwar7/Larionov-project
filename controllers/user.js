@@ -64,12 +64,16 @@ module.exports.updateMyTg = (req, res, next) => {
 };
 
 module.exports.register = (req, res, next) => {
-  const { name, email, password, tg } = req.body;
-  console.log(tg)
+  const {
+    name, email, password, tg,
+  } = req.body;
+  console.log(tg);
 
   bcrypt.hash(password, 10)
     .then((hash) => {
-      User.create({ name, email, password: hash, tg })
+      User.create({
+        name, email, password: hash, tg,
+      })
         .then((dataUser) => {
           res.status(CREATE_CODE).send({ name: dataUser.name, email: dataUser.email });
         })

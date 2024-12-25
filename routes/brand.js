@@ -2,7 +2,9 @@ const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 
 const router = express.Router();
-const { getAllBrands, getBrand, createBrand, deleteBrand, updateBrand } = require('../controllers/brand');
+const {
+  getAllBrands, getBrand, createBrand, deleteBrand, updateBrand,
+} = require('../controllers/brand');
 
 router.get('/', getAllBrands);
 router.get('/one', getBrand);

@@ -28,7 +28,7 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
-  const movieId  = req.params.id;
+  const movieId = req.params.id;
   const owner = req.user._id;
 
   Movie.findOne({ movieId, owner })
