@@ -14,7 +14,7 @@ app.use(cors({
   origin: ['http://192.168.103.52:5173', 'http://localhost:5173'], // allow to connect to this server just from this 3 urls
 }));
 
-const { PORT = 3001 } = process.env; // create default port for server
+const { PORT = 3008 } = process.env; // create default port for server
 
 const auth = require('./middlewares/auth'); // import func to check auth user to get allow to other functions of server
 
@@ -24,7 +24,7 @@ const { register, login } = require('./controllers/user'); // import controllers
 
 const NotFindError = require('./utils/notFindError'); // import 404 error
 
-mongoose.connect('mongodb://localhost:27017/test4', { // create new db with name bitfilmsdb or connect to availible db with name bitfilmsdb
+mongoose.connect('mongodb://localhost:27017/test3', { // create new db with name bitfilmsdb or connect to availible db with name bitfilmsdb
   useNewUrlParser: true, // new url analizator (need to correct work server)
 })
   .then(() => {
@@ -81,3 +81,5 @@ app.use((err, req, res, next) => { // get all errors
 app.listen(PORT, () => {
   console.log(`Ссылка на сервер: ${PORT}`);
 });
+
+module.exports = app;
